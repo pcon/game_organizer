@@ -1,4 +1,4 @@
-use <chip_holder.scad>
+use <../chip_holder.scad>
 
 generate_holder(
     tile_columns = 5,
@@ -9,5 +9,6 @@ generate_holder(
     tile_height = 1.75,
     wall_width = 3,
     rount_to_full_base = true,
-    fit_to_box_height = true
+    fit_to_box_height = true,
+    hollow_bottom = true
 );
