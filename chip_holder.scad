@@ -96,17 +96,19 @@ module generate_holder(
                 for (j = [0 : tile_columns - 1]) {
                     length = sqrt(pow(tile_width, 2) + pow(tile_depth, 2));
                     rot = acos(tile_depth / length);
+                    x_height = inside_height - slot_height;
+                    z_offset = min_floor_offset(wall_width);
 
                     col_offset = colOffset(j);
                     row_offset = rowOffset(i);
 
-                    translate([col_offset - wall_width / 2, row_offset + wall_width / 2, 0])
+                    translate([col_offset - wall_width / 2, row_offset + wall_width / 2, z_offset])
                     rotate([0, 0, -rot])
-                    cube([wall_width, length + wall_width, inside_height - slot_height]);
+                    cube([wall_width, length + wall_width, x_height]);
 
-                    translate([col_offset + tile_width, row_offset - wall_width / 2, 0])
+                    translate([col_offset + tile_width, row_offset - wall_width / 2, z_offset])
                     rotate([0, 0, rot])
-                    cube([wall_width, length + wall_width, inside_height - slot_height]);
+                    cube([wall_width, length + wall_width, x_height]);
                 }
             }
         }

@@ -10,5 +10,5 @@ generate_holder(
     wall_width = 3,
     rount_to_full_base = true,
     fit_to_box_height = true,
-    hollow_bottom = true
+    hollow_bottom = false
 );
