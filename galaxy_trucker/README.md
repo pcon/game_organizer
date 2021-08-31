@@ -8,9 +8,9 @@ This is for the CGE base edition of the game with a box base measuring ~341mm x 
 - [x] Holder for ship tiles
 - [x] Holder for money tiles
 - [X] Holder for cards
-- [ ] Holder for crew
-- [ ] Holder for cargo
-- [ ] Holder for energy markers
+- [X] Holder for crew
+- [X] Holder for cargo
+- [X] Holder for batteries
 - [ ] Holder for dice
 - [ ] Holder for ships
 - [ ] Holder for character markers

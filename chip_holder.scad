@@ -11,12 +11,15 @@ module generate_holder(
     tile_count = 20,
     tile_height = 1.75,
     wall_width = 3,
+    box_height = 69,
+    box_clearence = 15.75,
     rount_to_full_base = true,
     fit_to_box_height = true,
     hollow_bottom = false
 ) {
     function getSize(count, tile_size) = count * (tile_size + wall_width) + wall_width;
     function roundFullBase(count, tile_size) = (rount_to_full_base) ? ceil(getSize(count, tile_size) / base_tile_size()) * base_tile_size() : getSize(count, tile_size);
+    function max_height() = box_height - box_clearence;
 
     slot_height = tile_count * tile_height;
     min_floor_offset = min_floor_offset(wall_width);
@@ -116,12 +119,9 @@ module generate_holder(
 
     union() {
         difference() {
-            cube([total_width, total_depth, total_height]);
+            base_block(total_width, total_depth, total_height);
             tile_holes();
-            grid_slots(total_width, total_depth);
         }
         bottom_x();
     }
-    //square([total_width, total_depth]);
-    //thumb_slot_back();
 }
