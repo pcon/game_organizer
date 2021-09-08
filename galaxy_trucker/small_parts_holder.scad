@@ -25,8 +25,6 @@ total_depth = ceil(min_depth / base_tile_size()) * base_tile_size();
 total_height = box_height() - box_clearence();
 
 x_spread = (total_width - CREW_WIDTH - CARGO_WIDTH) / 3;
-echo(total_width=total_width);
-echo(x_spread=x_spread);
 
 function slotOffset(depth) = total_height - depth;
 function rowSpacing(first_row_entity) = (total_depth - first_row_entity - BATTERY_DEPTH) / 3;
@@ -42,7 +40,7 @@ module crew_holder() {
         CREW_DEPTH,
         CREW_HEIGHT * 2 // Doubled to then cut in half
     ];
-    
+
     x_offset = x_spread;
     y_offset = rowSpacing(CREW_DEPTH);
     z_offset = slotOffset(CREW_HEIGHT);
@@ -56,11 +54,11 @@ module cargo_holder() {
         CARGO_DEPTH,
         CARGO_HEIGHT * 2 // Double to then cut in half
     ];
-    
+
     x_offset = x_spread * 2 + CREW_WIDTH;
     y_offset = rowSpacing(CARGO_DEPTH);
     z_offset = slotOffset(CARGO_HEIGHT);
-    
+
     holder(slot, x_offset, y_offset, z_offset);
 }
 
@@ -70,11 +68,11 @@ module battery_holder() {
         BATTERY_DEPTH,
         BATTERY_HEIGHT * 2 // Double to then cut in half
     ];
-    
+
     x_offset = (total_width - BATTERY_WIDTH) / 2;
     y_offset = rowSpacing(first_row_depth) * 2 + first_row_depth;
     z_offset = slotOffset(BATTERY_HEIGHT);
-    
+
     holder(slot, x_offset, y_offset, z_offset);
 }
 

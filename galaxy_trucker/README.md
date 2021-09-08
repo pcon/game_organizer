@@ -11,7 +11,7 @@ This is for the CGE base edition of the game with a box base measuring ~341mm x 
 - [X] Holder for crew
 - [X] Holder for cargo
 - [X] Holder for batteries
-- [ ] Holder for dice
-- [ ] Holder for ships
+- [X] Holder for dice
+- [X] Holder for ships
 - [ ] Holder for character markers
-- [ ] Holder for timer
+- [X] Holder for timer
