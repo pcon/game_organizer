@@ -7,10 +7,6 @@ DICE_WIDTH = 16;
 dice_hole_width = DICE_WIDTH * 2;
 dice_hole_depth = DICE_WIDTH * 2;
 
-PLAYER_TOKEN_LENGTH = 51;
-PLAYER_TOKEN_WIDTH = 31.5;
-PLAYER_TOKEN_COUNT = 4;
-
 TIMER_LENGTH = 93;
 TIMER_DIAMETER = 21;
 
@@ -37,7 +33,7 @@ module timer_holder() {
         // Timer cutout
         translate([wall_width(), 0, 0])
         cube([TIMER_DIAMETER, TIMER_LENGTH, TIMER_DIAMETER]);
-        
+
         // Finger cutout
         cutout_length = cutoutLength(TIMER_LENGTH);
         cutout_offset = cutoutOffset(TIMER_LENGTH, cutout_length);
@@ -54,10 +50,10 @@ module dice_holder() {
     union() {
         // Dice cutout
         cube([dice_hole_width, dice_hole_depth, DICE_WIDTH]);
-        
+
         cutout_length = cutoutLength(dice_hole_depth);
         cutout_offset = cutoutOffset(dice_hole_depth, cutout_length);
-        
+
         // Finger cutout
         translate([dice_hole_width, cutout_offset, wall_width()])
         cube([wall_width(), cutout_length, DICE_WIDTH - wall_width()]);
