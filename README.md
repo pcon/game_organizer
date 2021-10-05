@@ -4,3 +4,4 @@ The `.scad` files in the root can be used to generate your own organizational fi
 
 # Games
 - [Galaxy Trucker](/pcon/game_organizer/tree/master/galaxy_trucker)
+- [Mr Jack Pocket](/pcon/game_organizer/tree/master/mr_jack_pocket)
