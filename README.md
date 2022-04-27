@@ -5,3 +5,4 @@ The `.scad` files in the root can be used to generate your own organizational fi
 # Games
 - [Galaxy Trucker](https://github.com/pcon/game_organizer/tree/main/galaxy_trucker)
 - [Mr Jack Pocket](https://github.com/pcon/game_organizer/tree/main/mr_jack_pocket)
+- [Oriflamme Ablaze](https://github.com/pcon/game_organizer/tree/main/oriflamme_ablaze)
