@@ -36,9 +36,12 @@ module grid_slots(width, depth) {
     grid(width, depth, "x");
 }
 
-module base_block(width, depth, height) {
+module base_block(width, depth, height, include_grid = true) {
     difference() {
         cube([width, depth, height]);
-        grid_slots(width, depth);
+
+        if (include_grid) {
+            grid_slots(width, depth);
+        }
     }
 }

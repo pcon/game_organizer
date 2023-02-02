@@ -1,0 +1,12 @@
+Box Dimensions
+Height: 43.5mm
+Width: 93.5mm
+Depth: 131.5mm
+
+Card Dimensions
+Height: 17.75mm
+Width: 88.75mm
+Depth: 63mm
+
+Book & Accessory Dimensions
+Height: 9.5mm
