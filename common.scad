@@ -2,6 +2,12 @@ BASE_TILE_SIZE=20;
 BASE_WIDTH=5;
 PEAK_HEIGHT=3;
 
+DEFAULT_FONT = "Ubuntu:style=Medium";
+DEFAULT_FONT_DEPTH = 1;
+DEFAULT_FONT_SIZE = 10;
+
+render_helper_h = 1;
+
 function y_up() = [90, 0, 0];
 function x_up() = [90, 0, 90];
 
@@ -10,6 +16,8 @@ function tri_mid() = BASE_WIDTH / 2;
 function triangle() = [[0, 0],[BASE_WIDTH, 0],[tri_mid(), PEAK_HEIGHT]];
 function base_tile_size() = BASE_TILE_SIZE;
 function peak_height() = PEAK_HEIGHT;
+function font_depth() = DEFAULT_FONT_DEPTH;
+function font_size() = DEFAULT_FONT_SIZE;
 
 function isX(direction) = (direction == "x");
 
@@ -44,4 +52,45 @@ module base_block(width, depth, height, include_grid = true) {
             grid_slots(width, depth);
         }
     }
+}
+
+module prism(l, w, h) {
+    polyhedron(
+        points=[ [0, 0, 0], [0, w, h], [l, w, h], [l, 0, 0], [0, w, 0], [l, w, 0] ],
+        faces=[ [0, 1, 2, 3],
+            [2, 1, 4, 5],
+            [0, 3, 5, 4],
+            [0, 4, 1],
+            [3, 2, 5]
+        ]
+    );
+}
+
+module pyramid(w) {
+    polyhedron(
+        points=[ [w,w,0],[w,-w,0],[-w,-w,0],[-w,w,0], [0,0,w]  ],
+        faces=[ [0,1,4],[1,2,4],[2,3,4],[3,0,4], [1,0,3],[2,1,3] ]
+    );
+}
+
+module embossed_text(
+    t,
+    h = DEFAULT_FONT_DEPTH,
+    font = DEFAULT_FONT,
+    size = DEFAULT_FONT_SIZE,
+    valign = "center",
+    halign = "center",
+    render_helper = true
+) {
+    extrude_h = (render_helper) ? h + render_helper_h : h;
+    
+    translate([0, 0, -h])
+    linear_extrude(extrude_h)
+    text(
+        t,
+        font = font,
+        size = size,
+        valign = valign,
+        halign = halign
+    );
 }

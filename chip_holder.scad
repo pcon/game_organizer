@@ -3,6 +3,8 @@ use <common.scad>
 MAX_THUMB_WIDTH = 30;
 WAY_DEEP = 100;
 
+render_helper = 1;
+
 module generate_holder(
     tile_columns = 4,
     tile_rows = 2,
@@ -38,6 +40,8 @@ module generate_holder(
 
     col_spread = (tile_columns > 1) ? (total_width - col_width - outside_walls) / (tile_columns - 1) : 0;
     row_spread = (tile_rows > 1) ? (total_depth - row_width - outside_walls) / (tile_rows - 1) : 0;
+    
+    thumb_width = min(tile_width - (wall_width * 2), MAX_THUMB_WIDTH);
 
     function colOffset(i) = (tile_columns == 1) ?
         (total_width - tile_width) / 2 :
@@ -52,14 +56,14 @@ module generate_holder(
     }
 
     module thumb_slot_front() {
-        width = min(tile_width - (wall_width * 2), MAX_THUMB_WIDTH);
+        width = thumb_width;
         side_offset = (tile_width - width) / 2;
         translate([side_offset, -WAY_DEEP, 0])
         square([width, WAY_DEEP]);
     }
 
     module thumb_slot_back() {
-        width = min(tile_width - (wall_width * 2), MAX_THUMB_WIDTH);
+        width = thumb_width;
         side_offset = (tile_width - width) / 2;
         translate([side_offset, tile_depth, 0])
         square([width, WAY_DEEP]);
@@ -68,7 +72,7 @@ module generate_holder(
     module tile_hole(slot_type = "none") {
         box_bottom = floor_offset;
         translate([0, 0, box_bottom])
-        linear_extrude(height = inside_height)
+        linear_extrude(height = inside_height + render_helper)
         union() {
             tile_slot();
             if (slot_type == "front" || slot_type == "both") {
@@ -118,11 +122,21 @@ module generate_holder(
         }
     }
 
-    union() {
-        difference() {
-            base_block(total_width, total_depth, total_height, include_grid = include_grid);
-            tile_holes();
+    difference() {
+        union() {
+            difference() {
+                base_block(total_width, total_depth, total_height, include_grid = include_grid);
+                tile_holes();
+            }
+            bottom_x();
         }
-        bottom_x();
+
+        if ($children) {
+            text_offset_x = (colOffset(0) + (tile_width - thumb_width) / 2) / 2;
+            text_offset_y = rowOffset(0) / 2;
+            
+            translate([text_offset_x, text_offset_y, total_height])
+            children(0);
+        }
     }
 }
