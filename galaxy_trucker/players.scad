@@ -7,7 +7,7 @@ PLAYER_TOKEN_COUNT = 4;
 
 total_width = base_tile_size() * 4;
 total_depth = base_tile_size() * 3;
-total_height = box_height() - box_clearence();
+total_height = box_height() - box_clearance();
 
 module ellipse(width, height) {
   scale([1, height / width, 1]) circle(r = width / 2);

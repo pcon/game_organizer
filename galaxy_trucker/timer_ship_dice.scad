@@ -19,7 +19,7 @@ min_width = max(SHIP_WIDTH, DICE_WIDTH * 2) + TIMER_DIAMETER + wall_width() * 3;
 
 total_width = ceil(min_width / base_tile_size()) * base_tile_size();
 total_depth = ceil(min_depth / base_tile_size()) * base_tile_size();
-total_height = box_height() - box_clearence();
+total_height = box_height() - box_clearance();
 
 dice_ship_padding = (total_depth - SHIP_DEPTH - dice_hole_depth) / 3;
 

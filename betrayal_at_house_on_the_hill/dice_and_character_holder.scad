@@ -1,4 +1,5 @@
 use <../common.scad>
+use <../grid_base.scad>
 use <common.scad>
 use <../roundedcube.scad>
 use <../parts.scad>
@@ -35,7 +36,7 @@ min_width = cw + double_wall;
 
 total_width = ceil(min_width / base_tile_size()) * base_tile_size();
 total_depth = ceil(min_depth / base_tile_size()) * base_tile_size();
-total_height = box_height() - box_clearence();
+total_height = box_height() - box_clearance();
 
 character_offset_y = (total_depth - ch) / 2;
 tracker_offset_y = character_offset_y + dice_hole_depth + wall_width() * 4;
@@ -47,7 +48,7 @@ BASE_MODIFIER_HEIGHT = 2;
 module character_cutout() {
     rc = 0.851 * CHARACTER_CARD_SIDE_LENGTH;
     ri = 0.688 * CHARACTER_CARD_SIDE_LENGTH;
-    
+
     translate([
         0,
         character_offset_y,
@@ -95,7 +96,7 @@ module dice_cutout() {
 
 module dice_thumb_cutout() {
     cutout_depth = dice_hole_depth + character_offset_y + render_helper + wall_width();
-    
+
     translate([
         (total_width - THUMB_WIDTH) / 2,
         -render_helper,
@@ -107,16 +108,16 @@ module dice_thumb_cutout() {
             cutout_depth,
             dice_hole_height
         ]);
-        
+
         end_of_cutout = [
             half_thumb,
             cutout_depth,
             half_thumb,
         ];
-        
+
         translate(end_of_cutout)
         sphere(d = THUMB_WIDTH);
-        
+
         translate(end_of_cutout)
         cylinder(d = THUMB_WIDTH, h = DICE_WIDTH / 2 + render_helper);
     }
@@ -160,28 +161,24 @@ module tracker_text_emboss() {
 module dice_and_character_holder() {
     difference() {
         base_block(total_width, total_depth, total_height);
-        
+
         character_cutout();
         character_thumb_cutout();
         character_text_emboss();
-        
+
         dice_cutout();
         dice_thumb_cutout();
         dice_text_emboss();
-        
+
         tracker_cutout();
         tracker_text_emboss();
     }
 }
 
-module base_modifier() {
-    base_block(total_width, total_depth, peak_height() + BASE_MODIFIER_HEIGHT);
-}
-
-part("dice_and_character_holder.stl", c = "red") {
+part("dice_and_character_holder.stl") {
     dice_and_character_holder();
 }
 
-part("dice_and_character_holder_basemodifier.stl", c = "blue") {
-    base_modifier();
+part("dice_and_character_holder_basemodifier.stl") {
+    base_modifier(total_width, total_depth);
 }

@@ -18,6 +18,7 @@ function base_tile_size() = BASE_TILE_SIZE;
 function peak_height() = PEAK_HEIGHT;
 function font_depth() = DEFAULT_FONT_DEPTH;
 function font_size() = DEFAULT_FONT_SIZE;
+function gridSize(x) = base_tile_size() * x;
 
 function isX(direction) = (direction == "x");
 

@@ -10,8 +10,8 @@ generate_holder(
     tile_height = 12.5,
     wall_width = wall_width(),
     box_height = box_height(),
-    box_clearence = box_clearence(),
-    rount_to_full_base = true,
+    box_clearance = box_clearance(),
+    round_to_full_base = true,
     fit_to_box_height = true,
     hollow_bottom = hollow_bottom()
 );

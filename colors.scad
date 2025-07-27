@@ -140,3 +140,6 @@ function colors() = [
 	"DarkSlateGray", 
 	"Black"
 ];
+
+function offsetColor(offset, i) = colors()[offset + i];
+function displayColor(i) = offsetColor(0, i);

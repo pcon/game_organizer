@@ -21,8 +21,8 @@ module grid_rotate(offset) {
 }
 
 module grid_base(columns, rows) {
-    total_width = base_tile_size() * columns;
-    total_depth = base_tile_size() * rows;
+    total_width = gridSize(columns);
+    total_depth = gridSize(rows);
 
     module perimeter() {
         union() {
@@ -50,4 +50,14 @@ module grid_base(columns, rows) {
         grid_slots(total_width, total_depth);
         perimeter();
     }
+}
+
+
+base_modifier_default_height = peak_height() + 2;
+module base_modifier(width, depth, height=base_modifier_default_height) {
+    base_block(width, depth, height);
+}
+
+module base_modifier_grid(x, y, height=base_modifier_default_height) {
+    base_block(grid_offset(x), grid_offset(y), height);
 }

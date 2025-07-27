@@ -14,7 +14,7 @@ module generate_holder(
     tile_height = 1.75,
     wall_width = 3,
     box_height = 69,
-    box_clearence = 15.75,
+    box_clearance = 15.75,
     round_to_full_base = true,
     fit_to_box_height = true,
     hollow_bottom = false,
@@ -22,7 +22,7 @@ module generate_holder(
 ) {
     function getSize(count, tile_size) = count * (tile_size + wall_width) + wall_width;
     function roundFullBase(count, tile_size) = (round_to_full_base) ? ceil(getSize(count, tile_size) / base_tile_size()) * base_tile_size() : getSize(count, tile_size);
-    function max_height() = box_height - box_clearence;
+    function max_height() = box_height - box_clearance;
 
     slot_height = tile_count * tile_height;
     min_floor_offset = min_floor_offset(wall_width);
@@ -40,7 +40,7 @@ module generate_holder(
 
     col_spread = (tile_columns > 1) ? (total_width - col_width - outside_walls) / (tile_columns - 1) : 0;
     row_spread = (tile_rows > 1) ? (total_depth - row_width - outside_walls) / (tile_rows - 1) : 0;
-    
+
     thumb_width = min(tile_width - (wall_width * 2), MAX_THUMB_WIDTH);
 
     function colOffset(i) = (tile_columns == 1) ?
@@ -134,7 +134,7 @@ module generate_holder(
         if ($children) {
             text_offset_x = (colOffset(0) + (tile_width - thumb_width) / 2) / 2;
             text_offset_y = rowOffset(0) / 2;
-            
+
             translate([text_offset_x, text_offset_y, total_height])
             children(0);
         }

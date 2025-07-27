@@ -1,0 +1,23 @@
+{
+  "name": "game_organizer",
+  "version": "1.0.0",
+  "description": "Game organizer designs using OpenSCAD",
+  "homepage": "https://github.com/pcon/game_organizer#readme",
+  "bugs": {
+    "url": "https://github.com/pcon/game_organizer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pcon/game_organizer.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "Patrick Connelly <patrick@deadlypenguin.com>",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "jsonfile": "^6.1.0"
+  }
+}

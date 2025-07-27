@@ -22,7 +22,7 @@ min_depth = first_row_depth + BATTERY_DEPTH + wall_width() * 3;
 
 total_width = ceil(min_width / base_tile_size()) * base_tile_size();
 total_depth = ceil(min_depth / base_tile_size()) * base_tile_size();
-total_height = box_height() - box_clearence();
+total_height = box_height() - box_clearance();
 
 x_spread = (total_width - CREW_WIDTH - CARGO_WIDTH) / 3;
 

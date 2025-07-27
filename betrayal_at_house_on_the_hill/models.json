@@ -1,0 +1,57 @@
+{
+    "destdir": "models",
+    "multipart": {
+        "grid_base": {
+            "source": "grid_base.scad",
+            "parts": [
+                "grid_1",
+                "grid_2",
+                "grid_3",
+                "grid_4"
+            ]
+        },
+        "token_holder": {
+            "source": "token_holder.scad",
+            "parts" : [
+                "token_holder_1",
+                "token_holder_2",
+                "token_holder_3",
+                "token_holder_4",
+                "token_holder_5",
+                "token_holder_lid"
+            ]
+        },
+        "dice_and_character_holder": {
+            "source": "dice_and_character_holder.scad",
+            "parts": [
+                "dice_and_character_holder",
+                "dice_and_character_holder_basemodifier"
+            ]
+        },
+        "card_holder": {
+            "source": "card_holder.scad",
+            "parts": [
+                "card_holder",
+                "card_holder_basemodifier"
+            ]
+        },
+        "room_holder": {
+            "source": "room_holder.scad",
+            "parts": [
+                "room_holder",
+                "room_holder_basemodifier",
+                "room_holder_double",
+                "room_holder_double_basemodifier"
+            ]
+        }
+    },
+    "singlepart": {
+        "figure_holder": {
+            "source": "figure_holder.scad"
+        }
+    },
+    "hollowbottom": [
+        "room_holder",
+        "room_holder_double"
+    ]
+}
